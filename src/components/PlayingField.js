@@ -4,7 +4,6 @@ import Player from "./Player";
 import Follower from "./Follower";
 
 const PlayingField = ({ githubObject, followersData }) => {
-  console.log(followersData);
   const [followers, setFollowers] = React.useState([]);
   const randomInt = max => Math.floor(Math.random() * max);
   React.useEffect(() => {
@@ -22,7 +21,16 @@ const PlayingField = ({ githubObject, followersData }) => {
         };
       })
     );
+    setInterval(() => {
+      setFollowers(followers =>
+        followers.map(follower => {
+          const { x, y, dx, dy, ...rest } = follower;
+          return { ...rest, x: x + dx, y: y + dy, dx, dy };
+        })
+      );
+    }, 50);
   }, [followersData, githubObject]);
+
   return (
     <div>
       <Player githubObject={githubObject} />
