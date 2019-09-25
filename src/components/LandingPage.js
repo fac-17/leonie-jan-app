@@ -1,5 +1,6 @@
 import React from "react";
 import fetchPlayer from "../utils/fetchPlayer";
+import "./LandingPage.css";
 
 const LandingPage = () => {
   const [input, setInput] = React.useState("LaLeonie");
@@ -22,7 +23,7 @@ const LandingPage = () => {
   }, [name]);
 
   return (
-    <main>
+    <main className="LandingPage">
       <h1>Welcome to our game!</h1>
       <h2>Enter your Github name to get started</h2>
       <form onSubmit={updateName}>
@@ -38,7 +39,7 @@ const LandingPage = () => {
         <button>Submit</button>
       </form>
       {githubObject && (
-        <div>
+        <div className="playerDisplay">
           <img src={githubObject.avatar_url} />
           <button>Start Playing</button>
         </div>
