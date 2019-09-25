@@ -32,9 +32,9 @@ const LandingPage = () => {
           onChange={updateInput}
           placeholder="Your Name"
         />
-        <p>
+        {/* <p>
           {input},{name}, {JSON.stringify(githubObject)}
-        </p>
+        </p> */}
         <button>Submit</button>
       </form>
       {githubObject && (
