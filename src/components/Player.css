@@ -1,8 +1,13 @@
-.player {
-    width:100px;
-    height: 100px;
+.player,
+.follower {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.player img {
-    border-radius: 50%;
-    width:100%
+.player img,
+.follower img {
+  border-radius: 50%;
+  width: 100%;
 }
