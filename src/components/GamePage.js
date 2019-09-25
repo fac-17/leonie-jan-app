@@ -3,12 +3,12 @@ import "./GamePage.css";
 import ScoreDisplay from "./ScoreDisplay";
 import PlayingField from "./PlayingField";
 
-const GamePage = () => {
+const GamePage = ({githubObject}) => {
   return (
     <main className="MainPage">
       <div>Game Page</div>
       <ScoreDisplay />
-      <PlayingField />
+      <PlayingField githubObject={githubObject}/>
     </main>
   );
 };

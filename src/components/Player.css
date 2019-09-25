@@ -1,0 +1,8 @@
+.player {
+    width:100px;
+    height: 100px;
+}
+.player img {
+    border-radius: 50%;
+    width:100%
+}
