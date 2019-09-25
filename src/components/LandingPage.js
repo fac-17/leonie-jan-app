@@ -1,11 +1,14 @@
 import React from "react";
-import fetchPlayer from "../utils/fetchPlayer";
 import "./LandingPage.css";
 
-const LandingPage = () => {
+const LandingPage = ({
+  name,
+  setName,
+  githubObject,
+  setGithubObject,
+  setPage
+}) => {
   const [input, setInput] = React.useState("LaLeonie");
-  const [name, setName] = React.useState("");
-  const [githubObject, setGithubObject] = React.useState(null);
 
   const updateInput = event => {
     setInput(event.target.value);
@@ -15,12 +18,6 @@ const LandingPage = () => {
     event.preventDefault();
     setName(input);
   };
-
-  React.useEffect(() => {
-    if (name) {
-      fetchPlayer(name).then(data => setGithubObject(data));
-    }
-  }, [name]);
 
   return (
     <main className="LandingPage">
@@ -40,8 +37,8 @@ const LandingPage = () => {
       </form>
       {githubObject && (
         <div className="playerDisplay">
-          <img src={githubObject.avatar_url} />
-          <button>Start Playing</button>
+          <img src={githubObject.avatar_url} alt="ProfilePic" />
+          <button onClick={() => setPage("GamePage")}>Start Playing</button>
         </div>
       )}
     </main>
