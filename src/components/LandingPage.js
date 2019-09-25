@@ -1,4 +1,5 @@
 import React from "react";
+import fetchPlayer from "../utils/fetchPlayer";
 
 const LandingPage = () => {
   const [input, setInput] = React.useState("LaLeonie");
@@ -15,7 +16,9 @@ const LandingPage = () => {
   };
 
   React.useEffect(() => {
-    console.log(name);
+    if (name) {
+      fetchPlayer(name).then(data => setGithubObject(data));
+    }
   }, [name]);
 
   return (
@@ -30,11 +33,16 @@ const LandingPage = () => {
           placeholder="Your Name"
         />
         <p>
-          {input},{name}
+          {input},{name}, {JSON.stringify(githubObject)}
         </p>
         <button>Submit</button>
       </form>
-      <button>Start Playing</button>
+      {githubObject && (
+        <div>
+          <img src={githubObject.avatar_url} />
+          <button>Start Playing</button>
+        </div>
+      )}
     </main>
   );
 };
