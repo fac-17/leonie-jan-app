@@ -53,10 +53,10 @@ function App() {
       )}
       {page === "FinalPage" && (
         <FinalPage
+          setPage={setPage}
           score={score}
           killer={killer}
-          setPage={setPage}
-          setScore={setScore}
+          name={name}
         />
       )}
     </div>
