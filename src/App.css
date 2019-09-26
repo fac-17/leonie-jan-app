@@ -1,22 +1,70 @@
+/* font-family: 'Luckiest Guy', cursive;
+font-family: 'McLaren', cursive;
+font-family: 'Big Shoulders Text', cursive; */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+  height: 100vh;
+  background-image: linear-gradient(-135deg, #62dfe6, #0c4a4e);
 }
 
-.App-link {
-  color: #09d3ac;
+input {
+  text-align: center;
+  display: block;
+  width: 10rem;
+  height: 2rem;
+  border-radius: 35px;
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+button {
+  text-align: center;
+  display: block;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 35px;
+  font-size: 1rem;
+  margin: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-family: arial;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.54) inset,
+    0 -2px 1px rgba(0, 0, 0, 0.31) inset;
+  background: #a3ef6b;
+  background: -moz-linear-gradient(top, #a3ef6b 0%, #4d9f11 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #a3ef6b),
+    color-stop(100%, #4d9f11)
+  );
+  background: -webkit-linear-gradient(top, #a3ef6b 0%, #4d9f11 100%);
+  background: -o-linear-gradient(top, #a3ef6b 0%, #4d9f11 100%);
+  background: -ms-linear-gradient(top, #a3ef6b 0%, #4d9f11 100%);
+  background: linear-gradient(to bottom, #a3ef6b 0%, #4d9f11 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3ef6b', endColorstr='#ff9700',GradientType=0 );
+}
+
+p,
+button,
+input,
+h2 {
+  font-family: "Big Shoulders Text", cursive;
 }

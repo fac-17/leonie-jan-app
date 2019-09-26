@@ -22,7 +22,11 @@ const LandingPage = ({
 
   return (
     <main className="LandingPage">
-      <h1>Welcome to our game!</h1>
+      <h1>
+        Welcome to <br />
+        <span className="game-name">Flee Your Followers!</span>
+      </h1>
+
       <form onSubmit={updateName}>
         <label htmlFor="name-input">
           Enter your Github name to get started

@@ -1,0 +1,8 @@
+.ScoreDisplay {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  color: #bdd3e1;
+}

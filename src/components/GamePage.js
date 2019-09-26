@@ -9,12 +9,12 @@ const GamePage = ({
   score,
   setScore,
   setPage,
-  setKiller
+  setKiller,
+  name
 }) => {
   return (
     <main className="MainPage">
-      <div>Game Page</div>
-      <ScoreDisplay score={score} />
+      <ScoreDisplay score={score} name={name} />
       <PlayingField
         githubObject={githubObject}
         followersData={followersData}
