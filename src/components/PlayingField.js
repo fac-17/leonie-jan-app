@@ -90,7 +90,6 @@ const PlayingField = ({
           if (collision) {
             setKiller(animatedFollower.name);
             setPage("FinalPage");
-            console.log("Collided with ", animatedFollower.name);
           }
           return animatedFollower;
         });
