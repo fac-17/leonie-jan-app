@@ -10,7 +10,9 @@ function App() {
   const [name, setName] = React.useState("");
   const [githubObject, setGithubObject] = React.useState(null);
   const [followersData, setFollowersData] = React.useState(null);
-  const [page, setPage] = React.useState("FinalPage");
+  const [page, setPage] = React.useState("LandingPage");
+  const [score, setScore] = React.useState(0);
+  const [killer, setKiller] = React.useState("");
 
   React.useEffect(() => {
     let followers_url = null;
@@ -40,9 +42,16 @@ function App() {
         />
       )}
       {page === "GamePage" && (
-        <GamePage githubObject={githubObject} followersData={followersData} />
+        <GamePage
+          setPage={setPage}
+          githubObject={githubObject}
+          followersData={followersData}
+          score={score}
+          setScore={setScore}
+          setKiller={setKiller}
+        />
       )}
-      {page === "FinalPage" && <FinalPage />}
+      {page === "FinalPage" && <FinalPage score={score} killer={killer} />}
     </div>
   );
 }

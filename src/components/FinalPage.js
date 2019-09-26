@@ -1,11 +1,12 @@
 import "./FinalPage.css";
 import React from "react";
 
-const FinalPage = () => {
+const FinalPage = ({ score, killer }) => {
   return (
     <main>
       <h1>Game Over</h1>
-      <h2>Your score is: </h2>
+      <h2>Your score is: {score} </h2>
+      <p> You were forced to merge with {killer}</p>
     </main>
   );
 };
