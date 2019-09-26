@@ -4,18 +4,24 @@ import Player from "./Player";
 import Follower from "./Follower";
 import animateFollower from "../utils/animateFollower";
 
-const PlayingField = ({ githubObject, followersData }) => {
+const PlayingField = ({
+  githubObject,
+  followersData,
+  score,
+  setScore,
+  setPage,
+  setKiller
+}) => {
   const [followers, setFollowers] = React.useState([]);
-  const [score,setScore] = React.useState(0);
   const width = 1000;
   const height = 600;
   const mobSize = 100;
   const speed = 5;
-  const [coords, setCoords] = React.useState([width/2, height/2]);
+  const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
- 
+
   React.useEffect(() => {
-    let interval=0
+    let interval = 0;
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
         setCoords(c => {
@@ -24,7 +30,7 @@ const PlayingField = ({ githubObject, followersData }) => {
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
-          return changed
+          return changed;
         });
       }
       if (event.key === "ArrowDown") {
@@ -33,7 +39,7 @@ const PlayingField = ({ githubObject, followersData }) => {
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
-          return changed
+          return changed;
         });
       }
       if (event.key === "ArrowLeft") {
@@ -42,7 +48,7 @@ const PlayingField = ({ githubObject, followersData }) => {
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
-          return changed
+          return changed;
         });
       }
       if (event.key === "ArrowRight") {
@@ -51,7 +57,7 @@ const PlayingField = ({ githubObject, followersData }) => {
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
-          return changed
+          return changed;
         });
       }
     };
@@ -71,13 +77,20 @@ const PlayingField = ({ githubObject, followersData }) => {
         };
       })
     );
-    interval=setInterval(() => {
-      setScore(score=>score+1)
+    interval = setInterval(() => {
+      setScore(score => score + 1);
       setFollowers(followers => {
         return followers.map(follower => {
-          const [animatedFollower,collision]=animateFollower(follower, width, height, mobSize);
-          if (collision){
-            console.log("Collided with ",animatedFollower.name)
+          const [animatedFollower, collision] = animateFollower(
+            follower,
+            width,
+            height,
+            mobSize
+          );
+          if (collision) {
+            setPage("FinalPage");
+            setKiller(animatedFollower.name);
+            console.log("Collided with ", animatedFollower.name);
           }
           return animatedFollower;
         });
@@ -85,13 +98,12 @@ const PlayingField = ({ githubObject, followersData }) => {
     }, 50);
     return () => {
       window.removeEventListener("keydown", keyHandler);
-      clearInterval(interval)
+      clearInterval(interval);
     };
   }, [followersData, githubObject]);
 
   return (
-    <div className="playing-field" style={{width,height}}>
-      <h1>Score: {score}</h1>
+    <div className="playing-field" style={{ width, height }}>
       <Player githubObject={githubObject} coords={coords} />
 
       {followers
