@@ -72,6 +72,7 @@ const PlayingField = ({
           dx: randomInt(10) - 5,
           dy: randomInt(10) - 5,
           visible: false,
+          dangerous:false,
           timer: i*25,
           playerCoords: coords
         };
