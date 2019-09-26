@@ -7,7 +7,6 @@ import animateFollower from "../utils/animateFollower";
 const PlayingField = ({
   githubObject,
   followersData,
-  score,
   setScore,
   setPage,
   setKiller
