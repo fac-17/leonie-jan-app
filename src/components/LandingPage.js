@@ -41,7 +41,7 @@ const LandingPage = ({
       </form>
       {githubObject && (
         <div className="playerDisplay">
-          <img src={githubObject.avatar_url} alt="ProfilePic" />
+          <img data-testid="avatar" src={githubObject.avatar_url} alt="ProfilePic" />
           <button onClick={() => setPage("GamePage")}>Start Playing</button>
         </div>
       )}
