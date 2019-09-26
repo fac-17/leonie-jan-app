@@ -1,19 +1,20 @@
 const animateFollower = (follower,width,height,mobSize)=>{
+    let collision=false;
     let { x, y, dx, dy, ...rest } = follower;
     x+=dx;
-    if (x<mobSize/2 || x>width-mobSize/2){
+    if (x<0 || x>width-mobSize){
         dx=-dx
         x+=dx*2
     }
     y+=dy;
-    if (y<mobSize/2 || y>height-mobSize/2){
+    if (y<0 || y>height-mobSize){
         dy=-dy
         y+=dy*2
     }
     if (areCirclesIntersecting(follower,{x:follower.playerCoords[0],y:follower.playerCoords[1]},mobSize)){
-        console.log("Collision!");
+        collision=true
     }
-    return { ...rest, x, y, dx, dy };
+    return [{ ...rest, x, y, dx, dy },collision];
 }
 const areCirclesIntersecting=(c1,c2,radius)=>{
     // console.log(c2.x);

@@ -6,20 +6,16 @@ import animateFollower from "../utils/animateFollower";
 
 const PlayingField = ({ githubObject, followersData }) => {
   const [followers, setFollowers] = React.useState([]);
+  const [score,setScore] = React.useState(0);
   const width = 1000;
   const height = 600;
   const mobSize = 100;
   const speed = 5;
-  const [coords, setCoords] = React.useState([100, 12]);
+  const [coords, setCoords] = React.useState([width/2, height/2]);
   const randomInt = max => Math.floor(Math.random() * max);
-  const coordsChange = changed => {
-    setCoords(changed);
-    console.log(changed);
-    setFollowers(followers =>
-      followers.map(follower => ({ ...follower, playerCoords: changed }))
-    );
-  };
+ 
   React.useEffect(() => {
+    let interval=0
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
         setCoords(c => {
@@ -74,20 +70,27 @@ const PlayingField = ({ githubObject, followersData }) => {
         };
       })
     );
-    setInterval(() => {
+    interval=setInterval(() => {
+      setScore(score=>score+1)
       setFollowers(followers => {
         return followers.map(follower => {
-          return animateFollower(follower, width, height, mobSize);
+          const [animatedFollower,collision]=animateFollower(follower, width, height, mobSize);
+          if (collision){
+            console.log("Collided with ",animatedFollower.name)
+          }
+          return animatedFollower;
         });
       });
     }, 50);
     return () => {
       window.removeEventListener("keydown", keyHandler);
+      clearInterval(interval)
     };
   }, [followersData, githubObject]);
 
   return (
-    <div>
+    <div className="playing-field" style={{width,height}}>
+      <h1>Score: {score}</h1>
       <Player githubObject={githubObject} coords={coords} />
 
       {followers
