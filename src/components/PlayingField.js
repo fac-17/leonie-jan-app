@@ -25,7 +25,8 @@ const PlayingField = ({
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
         setCoords(c => {
-          const changed = [c[0], c[1] - speed];
+          const changed=[c[0], Math.min(Math.max(c[1] - speed,0),height-mobSize)];
+          
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -34,7 +35,7 @@ const PlayingField = ({
       }
       if (event.key === "ArrowDown") {
         setCoords(c => {
-          const changed = [c[0], c[1] + speed];
+          const changed=[c[0],  Math.min(Math.max(c[1] + speed,0),height-mobSize)];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -43,7 +44,7 @@ const PlayingField = ({
       }
       if (event.key === "ArrowLeft") {
         setCoords(c => {
-          const changed = [c[0] - speed, c[1]];
+          const changed=[ Math.min(Math.max(c[0] - speed,0),width-mobSize), c[1]];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -52,7 +53,7 @@ const PlayingField = ({
       }
       if (event.key === "ArrowRight") {
         setCoords(c => {
-          const changed = [c[0] + speed, c[1]];
+          const changed=[ Math.min(Math.max(c[0] + speed,0),width-mobSize), c[1]];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
