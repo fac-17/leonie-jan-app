@@ -23,7 +23,7 @@ describe("Test FinalPage",()=>{
     })
     test("It reacts to a click and moves to Landing page",()=>{
         const setPage=jest.fn();
-        const {getByText}=render(<FinalPage setPage={setPage} name={"crianonim" }/>)
+        const {getByText}=render(<FinalPage setPage={setPage} setScore={jest.fn()}name={"crianonim" }/>)
         const button=getByText("Play Again");
         fireEvent.click(button);
         expect(setPage).toBeCalledTimes(1);

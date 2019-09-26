@@ -58,6 +58,7 @@ function App() {
           score={score}
           killer={killer}
           name={name}
+          setScore={setScore}
         />
       )}
     </div>

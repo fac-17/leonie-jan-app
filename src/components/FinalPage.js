@@ -23,6 +23,7 @@ const FinalPage = ({ score, killer, name, setPage, setScore }) => {
       >
         Play Again
       </button>
+      <HighScoreBoard />
     </main>
   );
 };
