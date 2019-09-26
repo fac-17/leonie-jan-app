@@ -51,9 +51,7 @@ function App() {
           setKiller={setKiller}
         />
       )}
-      {page === "FinalPage" && (
-        <FinalPage score={score} killer={killer} setPage={setPage} />
-      )}
+      {page === "FinalPage" && <FinalPage setPage={setPage} score={score} killer={killer} name={name}/>}
     </div>
   );
 }

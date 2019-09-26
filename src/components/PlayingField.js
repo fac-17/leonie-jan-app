@@ -89,8 +89,8 @@ const PlayingField = ({
             mobSize,
           );
           if (collision) {
-            setPage("FinalPage");
             setKiller(animatedFollower.name);
+            setPage("FinalPage");
             console.log("Collided with ", animatedFollower.name);
           }
           return animatedFollower;
