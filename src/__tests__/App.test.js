@@ -25,6 +25,23 @@ import { render, fireEvent, cleanup } from "@testing-library/react";
 //   });
 // });
 
+it("handles api call", () => {
+  const { getByLabelText, getByText, findByText, debug } = render(<App />);
+  const input = getByLabelText("Enter your Github name to get started");
+    const buttonNode = getByText("Submit");
+
+    const mockInput = [];
+    global.fetch = jest
+      .fn()
+      .mockImplementation(() =>
+        Promise.resolve({ json: () => Promise.resolve(mockInput) })
+      );
+
+    fireEvent.change(input, { target: { value: "Jan" } });
+    fireEvent.click(buttonNode);
+    return findByText("Start Playing");
+});
+
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(<App />, div);

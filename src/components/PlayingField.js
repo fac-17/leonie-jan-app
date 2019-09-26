@@ -7,7 +7,6 @@ import animateFollower from "../utils/animateFollower";
 const PlayingField = ({
   githubObject,
   followersData,
-  score,
   setScore,
   setPage,
   setKiller
@@ -91,7 +90,6 @@ const PlayingField = ({
           if (collision) {
             setKiller(animatedFollower.name);
             setPage("FinalPage");
-            console.log("Collided with ", animatedFollower.name);
           }
           return animatedFollower;
         });

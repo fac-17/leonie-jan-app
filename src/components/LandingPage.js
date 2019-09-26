@@ -38,9 +38,6 @@ const LandingPage = ({
             placeholder="Your Name"
           />
         </label>
-        {/* <p>
-          {input},{name}, {JSON.stringify(githubObject)}
-        </p> */}
         <button>Submit</button>
       </form>
       {githubObject && (
