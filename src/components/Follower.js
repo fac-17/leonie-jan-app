@@ -3,7 +3,7 @@ import React from "react";
 const Follower = ({ follower }) => {
   return (
     <div
-      className="follower"
+      className={"follower "+(follower.dangerous?"":"safe")}
       style={{ transform: `translate(${follower.x}px,${follower.y}px)` }}
     >
       <img src={follower.img} alt="follower" />
