@@ -1,5 +1,6 @@
 import "./FinalPage.css";
 import React from "react";
+import HighScoreBoard from "./HighScoreBoard";
 
 const FinalPage = ({ score, killer, name, setPage, setScore }) => {
   React.useEffect(() => {
