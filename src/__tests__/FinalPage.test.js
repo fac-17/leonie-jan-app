@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import FinalPage from "../components/FinalPage";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 describe("Test FinalPage",()=>{
     test("Page renders",()=>{
