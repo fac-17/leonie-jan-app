@@ -1,6 +1,7 @@
 import React from "react";
 import fetchPlayer from "../utils/fetchPlayer";
 import "./LandingPage.css";
+import "whatwg-fetch";
 
 const LandingPage = () => {
   const [input, setInput] = React.useState("LaLeonie");
@@ -25,14 +26,17 @@ const LandingPage = () => {
   return (
     <main className="LandingPage">
       <h1>Welcome to our game!</h1>
-      <h2>Enter your Github name to get started</h2>
       <form onSubmit={updateName}>
-        <input
-          type="text"
-          value={input}
-          onChange={updateInput}
-          placeholder="Your Name"
-        />
+        <label htmlFor="name-input">
+          Enter your Github name to get started
+          <input
+            id="name-input"
+            type="text"
+            value={input}
+            onChange={updateInput}
+            placeholder="Your Name"
+          />
+        </label>
         {/* <p>
           {input},{name}, {JSON.stringify(githubObject)}
         </p> */}
