@@ -11,3 +11,6 @@
   border-radius: 50%;
   width: 100%;
 }
+.player img {
+  border: 3px solid pink;
+}
