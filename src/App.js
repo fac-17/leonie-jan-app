@@ -24,7 +24,7 @@ function App() {
         })
         .then(() =>
           fetchFollowers(followers_url).then(data => {
-            setFollowersData(data);
+            setFollowersData(data.sort(()=>Math.random()-0.5));
           })
         );
     }
@@ -51,7 +51,7 @@ function App() {
           setKiller={setKiller}
         />
       )}
-      {page === "FinalPage" && <FinalPage score={score} killer={killer} name={name}/>}
+      {page === "FinalPage" && <FinalPage setPage={setPage} score={score} killer={killer} name={name}/>}
     </div>
   );
 }
