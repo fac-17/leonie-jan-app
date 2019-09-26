@@ -62,7 +62,7 @@ const PlayingField = ({
     };
     window.addEventListener("keydown", keyHandler);
     setFollowers(
-      followersData.map(follower => {
+      followersData.map((follower,i) => {
         return {
           img: follower.avatar_url,
           name: follower.login,
@@ -70,21 +70,21 @@ const PlayingField = ({
           y: randomInt(height - mobSize * 2 + mobSize),
           dx: randomInt(10) - 5,
           dy: randomInt(10) - 5,
-          visible: true,
-          timer: 0,
+          visible: false,
+          timer: i*100,
           playerCoords: coords
         };
       })
     );
     interval = setInterval(() => {
       setScore(score => score + 1);
-      setFollowers(followers => {
-        return followers.map(follower => {
+      setFollowers( followers => {
+        return followers.map((follower,i) => {
           const [animatedFollower, collision] = animateFollower(
             follower,
             width,
             height,
-            mobSize
+            mobSize,
           );
           if (collision) {
             setPage("FinalPage");
