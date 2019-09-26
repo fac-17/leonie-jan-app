@@ -1,4 +1,5 @@
 .playing-field {
     border:1px solid black;
     position: relative;
+    margin:auto
 }
