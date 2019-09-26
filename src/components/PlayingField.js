@@ -12,19 +12,50 @@ const PlayingField = ({ githubObject, followersData }) => {
   const speed = 5;
   const [coords, setCoords] = React.useState([100, 12]);
   const randomInt = max => Math.floor(Math.random() * max);
+  const coordsChange = changed => {
+    setCoords(changed);
+    console.log(changed);
+    setFollowers(followers =>
+      followers.map(follower => ({ ...follower, playerCoords: changed }))
+    );
+  };
   React.useEffect(() => {
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
-        setCoords(c => [c[0], c[1] - speed]);
+        setCoords(c => {
+          const changed=[c[0], c[1] - speed];
+          setFollowers(followers =>
+            followers.map(follower => ({ ...follower, playerCoords: changed }))
+          );
+          return changed
+        });
       }
       if (event.key === "ArrowDown") {
-        setCoords(c => [c[0], c[1] + speed]);
+        setCoords(c => {
+          const changed=[c[0], c[1] + speed];
+          setFollowers(followers =>
+            followers.map(follower => ({ ...follower, playerCoords: changed }))
+          );
+          return changed
+        });
       }
       if (event.key === "ArrowLeft") {
-        setCoords(c => [c[0] - speed, c[1]]);
+        setCoords(c => {
+          const changed=[c[0] - speed, c[1]];
+          setFollowers(followers =>
+            followers.map(follower => ({ ...follower, playerCoords: changed }))
+          );
+          return changed
+        });
       }
       if (event.key === "ArrowRight") {
-        setCoords(c => [c[0] + speed, c[1]]);
+        setCoords(c => {
+          const changed=[c[0] + speed, c[1]];
+          setFollowers(followers =>
+            followers.map(follower => ({ ...follower, playerCoords: changed }))
+          );
+          return changed
+        });
       }
     };
     window.addEventListener("keydown", keyHandler);
@@ -38,17 +69,17 @@ const PlayingField = ({ githubObject, followersData }) => {
           dx: randomInt(10) - 5,
           dy: randomInt(10) - 5,
           visible: true,
-          timer: 0
+          timer: 0,
+          playerCoords: coords
         };
       })
     );
     setInterval(() => {
-      setFollowers(followers =>{
+      setFollowers(followers => {
         return followers.map(follower => {
-          return animateFollower(follower, width, height, mobSize,coords);
-        })
-      }
-      );
+          return animateFollower(follower, width, height, mobSize);
+        });
+      });
     }, 50);
     return () => {
       window.removeEventListener("keydown", keyHandler);
