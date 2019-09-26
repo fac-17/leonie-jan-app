@@ -9,9 +9,9 @@ const FinalPage = ({ score, killer, name, setPage, setScore }) => {
     localStorage.setItem("hs", JSON.stringify(hs));
   }, [score, killer, name]);
   return (
-    <main>
+    <main class="FinalPage">
       <h1>Game Over {name}</h1>
-      <h2>Your score is: {score} </h2>
+      <h2 className="subheader">Your score is: {score} </h2>
       <p>
         You were forced to merge with <span className="killer">{killer}</span>
       </p>

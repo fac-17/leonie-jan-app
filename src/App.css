@@ -17,7 +17,7 @@ html {
   justify-content: center;
   align-content: center;
   height: 100vh;
-  background-image: linear-gradient(-135deg, #62dfe6, #0c4a4e);
+  background-image: linear-gradient(-160deg, #62dfe6, #0c4a4e);
 }
 
 input {
@@ -36,9 +36,10 @@ button {
   width: 10rem;
   height: 2.5rem;
   border-radius: 35px;
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 0.5rem;
   text-decoration: none;
+  font-family: "Big Shoulders Text", cursive !important;
   color: black;
   font-weight: bold;
   font-family: arial;
@@ -63,8 +64,14 @@ button {
 }
 
 p,
-button,
 input,
-h2 {
+h2,
+table,
+label {
   font-family: "Big Shoulders Text", cursive;
+}
+
+label,
+p {
+  font-size: 1.5rem;
 }

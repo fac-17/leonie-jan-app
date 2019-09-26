@@ -4,5 +4,11 @@
 }
 
 h2 {
-  color: #bdd3e1;
+  color: #376079;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
 }
