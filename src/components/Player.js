@@ -26,7 +26,7 @@ const Player= ({githubObject})=>{
     },[])
     
     return (
-        <div className="player"  key={coords[0]+":"+coords[1]}  style={{transform:" translate("+coords[0]+"px , "+coords[1]+"px)"}}>
+        <div className="player"   style={{transform:" translate("+coords[0]+"px , "+coords[1]+"px)"}}>
         <img src={githubObject.avatar_url} alt="player" />
         {githubObject.login} {coords[0]+":"+coords[1]}
         </div>
