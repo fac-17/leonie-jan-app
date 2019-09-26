@@ -49,6 +49,7 @@ function App() {
           score={score}
           setScore={setScore}
           setKiller={setKiller}
+          name={name}
         />
       )}
       {page === "FinalPage" && (

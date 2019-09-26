@@ -1,7 +1,7 @@
 import "./FinalPage.css";
 import React from "react";
 
-const FinalPage = ({ score, killer, name, setPage }) => {
+const FinalPage = ({ score, killer, name, setPage, setScore }) => {
   React.useEffect(() => {
     let hs = JSON.parse(localStorage.getItem("hs") || "[]");
     hs.push({ name, killer, score });
