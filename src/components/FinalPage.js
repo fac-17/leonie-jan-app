@@ -1,7 +1,7 @@
 import "./FinalPage.css";
 import React from "react";
 
-const FinalPage = ({ score, killer, setPage }) => {
+const FinalPage = ({ score, killer, setPage, setScore }) => {
   return (
     <main>
       <h1>Game Over</h1>
@@ -9,7 +9,14 @@ const FinalPage = ({ score, killer, setPage }) => {
       <p>
         You were forced to merge with <span class="killer">{killer}</span>
       </p>
-      <button onClick={() => setPage("LandingPage")}>Play Again</button>
+      <button
+        onClick={() => {
+          setScore(0);
+          setPage("LandingPage");
+        }}
+      >
+        Play Again
+      </button>
     </main>
   );
 };
