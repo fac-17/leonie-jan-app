@@ -4,12 +4,13 @@ import LandingPage from "./components/LandingPage";
 import fetchPlayer from "./utils/fetchPlayer";
 import fetchFollowers from "./utils/fetchFollowers";
 import GamePage from "./components/GamePage";
+import FinalPage from "./components/FinalPage";
 
 function App() {
   const [name, setName] = React.useState("");
   const [githubObject, setGithubObject] = React.useState(null);
   const [followersData, setFollowersData] = React.useState(null);
-  const [page, setPage] = React.useState("LandingPage");
+  const [page, setPage] = React.useState("FinalPage");
 
   React.useEffect(() => {
     let followers_url = null;
@@ -41,6 +42,7 @@ function App() {
       {page === "GamePage" && (
         <GamePage githubObject={githubObject} followersData={followersData} />
       )}
+      {page === "FinalPage" && <FinalPage />}
     </div>
   );
 }
