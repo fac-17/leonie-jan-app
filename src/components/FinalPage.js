@@ -1,5 +1,6 @@
 import "./FinalPage.css";
 import React from "react";
+import HighScoreBoard from "./HighScoreBoard";
 
 const FinalPage = ({ score, killer, name, setPage }) => {
   React.useEffect(()=>{
@@ -16,6 +17,7 @@ const FinalPage = ({ score, killer, name, setPage }) => {
         You were forced to merge with <span className="killer">{killer}</span>
       </p>
       <button onClick={() => setPage("LandingPage")}>Play Again</button>
+      <HighScoreBoard />
     </main>
   );
 };
