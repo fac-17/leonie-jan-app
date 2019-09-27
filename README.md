@@ -26,15 +26,13 @@ The game uses the GitHub API. No API key needed.
 [ ] Scoring depending not only on time but also on number of followers
 [ ] Error message when user doesn't exist in GitHub 
 
-## Component Setup 
-API (parent of 3 components)
-        LandingPage
-        GamePage (parent of 2 components)
-                Playing field (parent of 2 components)
-                        Main Player
-                        Followers
-                Score display
-        EndingPage
+## Component setup 
+### API 
+        parent of: LandingPage, GamePage, EndingPage
+### GamePage 
+     parent of: PlayingField, ScoreDisplay
+### Playingfiled 
+     parent of:  MainPlayer, Followers
 
 ## Available Scripts
 
