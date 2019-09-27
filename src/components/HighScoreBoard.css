@@ -1,3 +1,34 @@
+.highscore {
+  width: 400px;
+}
+
 table {
-    /* margin: 2rem; */
+  /* margin: 2rem; */
+  width: 100%;
+  table-layout: fixed;
+  background-image: radial-gradient(circle, #ace14c, #6fbb38);
+  /* border: 3px solid #60a130; */
+  border-radius: 20px;
+  margin: 5% 0;
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.54) inset,
+    0 -6px 2px rgba(0, 0, 0, 0.31) inset;
+  padding: 15px;
+}
+
+th {
+  padding: 20px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #223811;
+  text-transform: uppercase;
+}
+td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #223811;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.24);
 }
