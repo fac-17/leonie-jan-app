@@ -5,4 +5,5 @@
   background-image: radial-gradient(circle, #ace14c, #58942c);
   border: solid 10px #dc5a1f;
   border-radius: 50px;
+  box-sizing: content-box;
 }
