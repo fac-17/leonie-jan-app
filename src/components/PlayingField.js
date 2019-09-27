@@ -21,7 +21,11 @@ const PlayingField = ({
   const [followers, setFollowers] = React.useState([]);
   const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
-
+  
+  React.useEffect(()=>{
+    paused.current=pausedShow;
+  })
+  
   React.useEffect(() => {
     setFollowers(
       followersData.map((follower, i) => {
@@ -41,8 +45,7 @@ const PlayingField = ({
     );
     const keyHandler = event => {
       if (event.key===" "){
-        paused.current=!paused.current;
-        setPausedShow(paused.current)
+        setPausedShow(!paused.current)
       }
       if (paused.current) return
       if (event.key === "ArrowUp") {
