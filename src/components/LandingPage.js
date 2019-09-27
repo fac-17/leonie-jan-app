@@ -1,12 +1,10 @@
 import React from "react";
 import "./LandingPage.css";
-import "whatwg-fetch";
+
 
 const LandingPage = ({
-  name,
   setName,
   githubObject,
-  setGithubObject,
   setPage
 }) => {
   const [input, setInput] = React.useState("LaLeonie");
