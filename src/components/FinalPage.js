@@ -10,7 +10,9 @@ const FinalPage = ({ score, killer, name, setPage, setScore }) => {
   }, [score, killer, name]);
   return (
     <main className="FinalPage">
-      <h1>Game Over {name}</h1>
+      <h1>
+        Game Over <span className="game-name">{name}</span>
+      </h1>
       <h2 className="subheader">Your score is: {score} </h2>
       <p>
         You were forced to merge with <span className="killer">{killer}</span>
