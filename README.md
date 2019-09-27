@@ -1,4 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Flee Your Followers 
+
+Ever thought of your GitHub followers as some merciless, zombie-like stalkers that aim to destroy you with forced merges?! Well, they are!! At least in this fun but nerve-racking game. The goal of this adventure is to espace your Github followers as long as possible in a small playing field that quickly fills up with enemies. But watch  out, the more followers you have, the harder it is to survive. 
+
+This game was created by [Jan](https://github.com/crianonim) and [Leonie](https://github.com/LaLeonie). The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## User Journey 
+- Enter your GitHub name on the Landing Page 
+- Move your GitHub avatar on the playing field by pressing the arrow keys. One after another, more of your GitHub follower will appear on the playing field. As soon as their avatars are fully visible, they can destroy you, so escape quickly. The longer you survive, the more points you get. 
+- Once you failed, you will see a table of recent scores (local on your computer) and you can start all over again
+
+## API 
+The game uses the GitHub API. No API key needed. 
+
+## Project Goals 
+[x] Accept some user input (e.g. a username)
+[x] Query an API (e.g. the Github API, or any other fun one)
+[x] Populate the UI with API data
+[x] Have some form of persistent state and interactivity, e.g.
+[x] A score bar that increases over time
+[x] A game over page that shows the final score and allows you to play again
+[x] Have integration tests using React Testing Library
+
+## Project Stretch Goals 
+[x] A table showcasing recent scores 
+[ ] Scoring depending not only on time but also on number of followers
+[ ] Error message when user doesn't exist in GitHub 
+
+## Component setup 
+### API 
+        parent of: LandingPage, GamePage, EndingPage
+### GamePage 
+     parent of: PlayingField, ScoreDisplay
+### Playingfiled 
+     parent of:  MainPlayer, Followers
 
 ## Available Scripts
 

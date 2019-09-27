@@ -7,3 +7,7 @@
   border-radius: 50px;
   box-sizing: content-box;
 }
+
+.paused {
+  text-align: center;
+}

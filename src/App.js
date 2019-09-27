@@ -5,12 +5,17 @@ import fetchPlayer from "./utils/fetchPlayer";
 import fetchFollowers from "./utils/fetchFollowers";
 import GamePage from "./components/GamePage";
 import FinalPage from "./components/FinalPage";
+import {
+  LandingPageString,
+  GamePageString,
+  FinalPageString
+} from "./utils/variables";
 
 function App() {
   const [name, setName] = React.useState("");
   const [githubObject, setGithubObject] = React.useState(null);
   const [followersData, setFollowersData] = React.useState(null);
-  const [page, setPage] = React.useState("LandingPage");
+  const [page, setPage] = React.useState(LandingPageString);
   const [score, setScore] = React.useState(0);
   const [killer, setKiller] = React.useState("");
 
@@ -32,16 +37,14 @@ function App() {
 
   return (
     <div className="App">
-      {page === "LandingPage" && (
+      {page === LandingPageString && (
         <LandingPage
-          name={name}
           setName={setName}
           githubObject={githubObject}
-          setGithubObject={setGithubObject}
           setPage={setPage}
         />
       )}
-      {page === "GamePage" && (
+      {page === GamePageString && (
         <GamePage
           setPage={setPage}
           githubObject={githubObject}
@@ -52,7 +55,7 @@ function App() {
           name={name}
         />
       )}
-      {page === "FinalPage" && (
+      {page === FinalPageString && (
         <FinalPage
           setPage={setPage}
           score={score}

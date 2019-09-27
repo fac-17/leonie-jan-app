@@ -16,7 +16,7 @@ html {
   display: flex;
   justify-content: center;
   align-content: center;
-  height: 100vh;
+  min-height: 100vh;
   background-image: linear-gradient(-160deg, #62dfe6, #0c4a4e);
 }
 
@@ -74,4 +74,9 @@ label {
 label,
 p {
   font-size: 1.5rem;
+}
+
+.game-name {
+  font-size: 5rem;
+  color: #e0eaf1;
 }
