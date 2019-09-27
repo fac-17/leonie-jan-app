@@ -19,8 +19,24 @@ const PlayingField = ({
   const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
 
+ 
   React.useEffect(() => {
-    let interval = 0;
+    setFollowers(
+      followersData.map((follower,i) => {
+        return {
+          img: follower.avatar_url,
+          name: follower.login,
+          x: randomInt(width - mobSize * 2 + mobSize),
+          y: randomInt(height - mobSize * 2 + mobSize),
+          dx: randomInt(10) - 5,
+          dy: randomInt(10) - 5,
+          visible: false,
+          dangerous:false,
+          timer: i*25,
+          playerCoords: coords
+        };
+      })
+    );
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
         setCoords(c => {
@@ -61,22 +77,10 @@ const PlayingField = ({
       }
     };
     window.addEventListener("keydown", keyHandler);
-    setFollowers(
-      followersData.map((follower,i) => {
-        return {
-          img: follower.avatar_url,
-          name: follower.login,
-          x: randomInt(width - mobSize * 2 + mobSize),
-          y: randomInt(height - mobSize * 2 + mobSize),
-          dx: randomInt(10) - 5,
-          dy: randomInt(10) - 5,
-          visible: false,
-          dangerous:false,
-          timer: i*25,
-          playerCoords: coords
-        };
-      })
-    );
+    return ()=>window.removeEventListener("keydown",keyHandler)
+  },[followersData]);
+  React.useEffect(()=>{
+    let interval=0;
     interval = setInterval(() => {
       setScore(score => score + 1);
       setFollowers( followers => {
@@ -95,11 +99,9 @@ const PlayingField = ({
         });
       });
     }, 50);
-    return () => {
-      window.removeEventListener("keydown", keyHandler);
-      clearInterval(interval);
-    };
-  }, [followersData, githubObject]);
+    return ()=>clearInterval(interval);
+  },[followersData, githubObject])
+
 
   return (
     <div className="playing-field" style={{ width, height }}>
