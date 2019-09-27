@@ -16,11 +16,15 @@ const PlayingField = ({
   const height = 600;
   const mobSize = 100;
   const speed = 5;
-  const paused=React.useRef();
-  const [pausedShow,setPausedShow]=React.useState(false)
+  const paused = React.useRef();
+  const [pausedShow, setPausedShow] = React.useState(false);
   const [followers, setFollowers] = React.useState([]);
   const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
+
+  React.useEffect(() => {
+    paused.current = pausedShow;
+  });
 
   React.useEffect(() => {
     setFollowers(
@@ -40,60 +44,37 @@ const PlayingField = ({
       })
     );
     const keyHandler = event => {
-      if (event.key===" "){
-        paused.current=!paused.current;
-        setPausedShow(paused.current)
+      if (event.key === " ") {
+        setPausedShow(!paused.current);
       }
-      if (paused.current) return
-      if (event.key === "ArrowUp") {
-        setCoords(c => {
-          const changed = [
-            c[0],
-            Math.min(Math.max(c[1] - speed, 0), height - mobSize)
-          ];
-
-          setFollowers(followers =>
-            followers.map(follower => ({ ...follower, playerCoords: changed }))
-          );
-          return changed;
-        });
+      if (paused.current) return;
+      let changed = [0, 0];
+      switch (event.key) {
+        case "ArrowUp":
+          changed = [0, -1];
+          break;
+        case "ArrowDown":
+          changed = [0, 1];
+          break;
+        case "ArrowLeft":
+          changed = [-1, 0];
+          break;
+        case "ArrowRight":
+          changed = [1, 0];
+          break;
+        default:
+          changed = [0, 0];
       }
-      if (event.key === "ArrowDown") {
-        setCoords(c => {
-          const changed = [
-            c[0],
-            Math.min(Math.max(c[1] + speed, 0), height - mobSize)
-          ];
-          setFollowers(followers =>
-            followers.map(follower => ({ ...follower, playerCoords: changed }))
-          );
-          return changed;
-        });
-      }
-      if (event.key === "ArrowLeft") {
-        setCoords(c => {
-          const changed = [
-            Math.min(Math.max(c[0] - speed, 0), width - mobSize),
-            c[1]
-          ];
-          setFollowers(followers =>
-            followers.map(follower => ({ ...follower, playerCoords: changed }))
-          );
-          return changed;
-        });
-      }
-      if (event.key === "ArrowRight") {
-        setCoords(c => {
-          const changed = [
-            Math.min(Math.max(c[0] + speed, 0), width - mobSize),
-            c[1]
-          ];
-          setFollowers(followers =>
-            followers.map(follower => ({ ...follower, playerCoords: changed }))
-          );
-          return changed;
-        });
-      }
+      setCoords(c => {
+        const newC = [
+          Math.min(Math.max(c[0] + speed * changed[0], 0), width - mobSize),
+          Math.min(Math.max(c[1] + speed * changed[1], 0), height - mobSize)
+        ];
+        setFollowers(followers =>
+          followers.map(follower => ({ ...follower, playerCoords: newC }))
+        );
+        return newC;
+      });
     };
     window.addEventListener("keydown", keyHandler);
     return () => window.removeEventListener("keydown", keyHandler);
@@ -101,7 +82,7 @@ const PlayingField = ({
   React.useEffect(() => {
     let interval = 0;
     interval = setInterval(() => {
-      if (paused.current) return
+      if (paused.current) return;
       setScore(score => score + 1);
       setFollowers(followers => {
         return followers.map((follower, i) => {
