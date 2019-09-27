@@ -5,8 +5,8 @@
   border-radius: 50px;
   width: 60%;
   min-height: 60%;
+  margin: 5% auto;
   padding: 5%;
-  margin: auto;
   background-image: radial-gradient(circle, #faba26, #e57a49);
   text-align: center;
   border: solid 10px #e1642b;
@@ -14,6 +14,7 @@
 
 .killer {
   font-weight: bold;
+  color: #0a3c3f;
 }
 
 h1 {
