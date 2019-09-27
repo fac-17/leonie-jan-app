@@ -34,10 +34,8 @@ function App() {
     <div className="App">
       {page === "LandingPage" && (
         <LandingPage
-          name={name}
           setName={setName}
           githubObject={githubObject}
-          setGithubObject={setGithubObject}
           setPage={setPage}
         />
       )}
