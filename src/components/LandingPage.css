@@ -20,12 +20,13 @@
 h1 {
   font-family: "Luckiest Guy", cursive;
   font-size: 3rem;
-  color: #ecf2f6;
+  color: #f8fafb;
   text-shadow: -2px 0 #376079, 0 3px #376079, 2px 0 #376079, 0 -3px #376079;
 }
 
 .game-name {
-  font-size: 4.5rem;
+  font-size: 5rem;
+  color: #e0eaf1;
 }
 
 form {

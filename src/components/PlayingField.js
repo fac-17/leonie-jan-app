@@ -3,6 +3,7 @@ import "./PlayingField.css";
 import Player from "./Player";
 import Follower from "./Follower";
 import animateFollower from "../utils/animateFollower";
+import { FinalPageString } from "../utils/variables";
 
 const PlayingField = ({
   githubObject,
@@ -19,10 +20,9 @@ const PlayingField = ({
   const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
 
- 
   React.useEffect(() => {
     setFollowers(
-      followersData.map((follower,i) => {
+      followersData.map((follower, i) => {
         return {
           img: follower.avatar_url,
           name: follower.login,
@@ -31,8 +31,8 @@ const PlayingField = ({
           dx: randomInt(10) - 5,
           dy: randomInt(10) - 5,
           visible: false,
-          dangerous:false,
-          timer: i*25,
+          dangerous: false,
+          timer: i * 25,
           playerCoords: coords
         };
       })
@@ -40,8 +40,11 @@ const PlayingField = ({
     const keyHandler = event => {
       if (event.key === "ArrowUp") {
         setCoords(c => {
-          const changed=[c[0], Math.min(Math.max(c[1] - speed,0),height-mobSize)];
-          
+          const changed = [
+            c[0],
+            Math.min(Math.max(c[1] - speed, 0), height - mobSize)
+          ];
+
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -50,7 +53,10 @@ const PlayingField = ({
       }
       if (event.key === "ArrowDown") {
         setCoords(c => {
-          const changed=[c[0],  Math.min(Math.max(c[1] + speed,0),height-mobSize)];
+          const changed = [
+            c[0],
+            Math.min(Math.max(c[1] + speed, 0), height - mobSize)
+          ];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -59,7 +65,10 @@ const PlayingField = ({
       }
       if (event.key === "ArrowLeft") {
         setCoords(c => {
-          const changed=[ Math.min(Math.max(c[0] - speed,0),width-mobSize), c[1]];
+          const changed = [
+            Math.min(Math.max(c[0] - speed, 0), width - mobSize),
+            c[1]
+          ];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -68,7 +77,10 @@ const PlayingField = ({
       }
       if (event.key === "ArrowRight") {
         setCoords(c => {
-          const changed=[ Math.min(Math.max(c[0] + speed,0),width-mobSize), c[1]];
+          const changed = [
+            Math.min(Math.max(c[0] + speed, 0), width - mobSize),
+            c[1]
+          ];
           setFollowers(followers =>
             followers.map(follower => ({ ...follower, playerCoords: changed }))
           );
@@ -77,31 +89,30 @@ const PlayingField = ({
       }
     };
     window.addEventListener("keydown", keyHandler);
-    return ()=>window.removeEventListener("keydown",keyHandler)
-  },[followersData]);
-  React.useEffect(()=>{
-    let interval=0;
+    return () => window.removeEventListener("keydown", keyHandler);
+  }, [followersData]);
+  React.useEffect(() => {
+    let interval = 0;
     interval = setInterval(() => {
       setScore(score => score + 1);
-      setFollowers( followers => {
-        return followers.map((follower,i) => {
+      setFollowers(followers => {
+        return followers.map((follower, i) => {
           const [animatedFollower, collision] = animateFollower(
             follower,
             width,
             height,
-            mobSize,
+            mobSize
           );
           if (collision) {
             setKiller(animatedFollower.name);
-            setPage("FinalPage");
+            setPage(FinalPageString);
           }
           return animatedFollower;
         });
       });
     }, 50);
-    return ()=>clearInterval(interval);
-  },[followersData, githubObject])
-
+    return () => clearInterval(interval);
+  }, [followersData, githubObject]);
 
   return (
     <div className="playing-field" style={{ width, height }}>
