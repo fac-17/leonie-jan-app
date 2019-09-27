@@ -12,11 +12,13 @@ const PlayingField = ({
   setPage,
   setKiller
 }) => {
-  const [followers, setFollowers] = React.useState([]);
   const width = 1000;
   const height = 600;
   const mobSize = 100;
   const speed = 5;
+  const paused=React.useRef();
+  const [pausedShow,setPausedShow]=React.useState(false)
+  const [followers, setFollowers] = React.useState([]);
   const [coords, setCoords] = React.useState([width / 2, height / 2]);
   const randomInt = max => Math.floor(Math.random() * max);
 
@@ -38,6 +40,11 @@ const PlayingField = ({
       })
     );
     const keyHandler = event => {
+      if (event.key===" "){
+        paused.current=!paused.current;
+        setPausedShow(paused.current)
+      }
+      if (paused.current) return
       if (event.key === "ArrowUp") {
         setCoords(c => {
           const changed = [
@@ -94,6 +101,7 @@ const PlayingField = ({
   React.useEffect(() => {
     let interval = 0;
     interval = setInterval(() => {
+      if (paused.current) return
       setScore(score => score + 1);
       setFollowers(followers => {
         return followers.map((follower, i) => {
@@ -116,6 +124,7 @@ const PlayingField = ({
 
   return (
     <div className="playing-field" style={{ width, height }}>
+      {pausedShow && <h1 className="paused">Paused!</h1>}
       <Player githubObject={githubObject} coords={coords} />
 
       {followers
