@@ -6,3 +6,7 @@
   border: solid 10px #dc5a1f;
   border-radius: 50px;
 }
+
+.paused {
+  text-align: center;
+}
